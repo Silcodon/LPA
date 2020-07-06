@@ -1,0 +1,48 @@
+/*Floyd-warshall*/
+int FW(grafo* grafo,int ap[], int servers){
+    int i,k,j,resp2=0;
+    no* no = NULL;
+    int visitado[grafo->vertices+1];
+    
+    for (i=1; i<=grafo->vertices; i++) {
+        visitado[i]=0;
+        for (j=1; j<=grafo->vertices; j++) {
+            if(i==j){
+                D[i][j]=0;
+            }
+            else{
+                D[i][j]=SHRT_MAX;
+            }
+        }
+    }
+    for (i=1; i<=grafo->vertices; i++) {
+        no = grafo->lista[i].head;
+        while (no) {
+            D[i][no->destino]=no->distancia;
+            no = no->proximo;
+        }
+        free(no);
+    }
+    for (k=1; k<=grafo->vertices; k++) {
+        for (i=1; i<=grafo->vertices; i++) {
+            visitado[i]=0;
+        }
+        for (i=1; i<=grafo->vertices; i++) {
+            for (j=1; j<=grafo->vertices; j++) {
+                if (D[i][j] > D[i][k] + D[k][j]){
+                    D[i][j] = D[i][k] + D[k][j];
+//                    printf("k:%d i:%d j:%d da: %d\n",k,i,j,D[i][j]);
+                }
+                if(k==grafo->vertices && ap[i]==1 && ap[j]==1 && visitado[i]==0 && D[i][j]<SHRT_MAX){
+                    resp2+=D[i][j];
+                    visitado[j]=1;
+//                    printf("k:%d i:%d j:%d da: %d\n",k,i,j,D[i][j]);
+                }
+            }
+        }
+    }
+    
+
+    
+    return resp2;
+}

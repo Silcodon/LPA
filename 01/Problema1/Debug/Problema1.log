@@ -1,0 +1,4 @@
+﻿  Source.c
+C:\Users\anton\Desktop\Uni\3 Ano\2 Semestre\LPA\P\01\Problema1\Source.c(31,10): warning C4101: 'c': unreferenced local variable
+C:\Users\anton\Desktop\Uni\3 Ano\2 Semestre\LPA\P\01\Problema1\Source.c(85): warning C4716: 'compara_posicao': must return a value
+  Problema1.vcxproj -> C:\Users\anton\Desktop\Uni\3 Ano\2 Semestre\LPA\P\01\Problema1\Debug\Problema1.exe
